@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>
@@ -7,7 +8,7 @@
     body
     {
        background-image: url("Castle.jpg");
-       background-size: 100% 100%;
+       background-size: 100% 140%;
     }
     #Welcome
     {
@@ -24,17 +25,68 @@
     {
     width: 330px;
     height: 440px;
-    background-color: transparent;
+    background-color: rgba(255,255,255,0.5);
     border: 7px solid black;
     position: relative; /* Position relative to its normal position */
     left: 38%; /* Adjust as needed */
     top: 12vh; /* Adjust as needed */
+    color: black;  
+    align-content: center; 
+    align-items: center;
+    }
+    #desc
+    {
+        text-align: center;
+        background-color: transparent;
+        color: black;
+        font-family:"Calibri", serif;
+        font-size: 24px;
+    }
+    #confirmclass
+    {
+        width: 200px;
+        height: 80px;
+        font-size: 22px;
     }
 
     </style>
   </head>
   <body>
-    <div id="Welcome"> This is Fabled's Dungeon!</h1>
-    <div id="box"></div>
+    <div id="Welcome"> 
+        This is Fabled's Dungeon!
+    <div>
+    <div id="box">
+        <p id="desc">CHOOSE A CLASS!<br><br><br><br><br><br><br></p>
+        <button id="ranger" onclick="changedesc('ranger')">Ranger</button>
+        <button id="warrior" onclick="changedesc('warrior')">Warrior</button>
+        <button id="paladin" onclick="changedesc('paladin')">Paladin</button><br>
+        <button id="confirmclass" onclick="setclass()">Confirm Class</button>
+    </div>
+    <script>
+        var battleclass;
+        function changedesc(classtype)
+        {
+            battleclass=classtype;
+            var para=document.getElementById('desc');
+            if (classtype=="ranger")
+            {
+                para.innerHTML="RANGER<br><br>Rangers specialize in Quick attacks and superior speeds.<br>But, They are quite the fragile units and lack in defense and endurance.";
+            }
+            if (classtype=="warrior")
+            {
+                para.innerHTML="WARRIOR<br><br>Warriors strike a balance between attack and defence.<br>The Most Balanced Class of the three with an uniform split between the characteristics.";
+            }
+            if (classtype=="paladin")
+            {
+                para.innerHTML="PALADIN<br><br>Paladins hailed as the protectors of the realm.<br>They have huge endurance and survivability but as a protector have low offensive capabilities."
+            }
+        }
+        function setclass()
+        {
+            classch=document.getElementById('box');
+            classch.innerHTML="You Have Chosen to Be a "+battleclass;
+            classch.style.display='flex';
+        }
+    </script>
   </body>
 </html>
