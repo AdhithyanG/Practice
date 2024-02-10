@@ -52,16 +52,18 @@
         {
 
             classch=document.getElementById('box');
-            var choice="<p id=classcho>You Have Chosen to Be a "+battleclass+"</p>";
-            var stats='<br><button id="showstat" onclick="showstat()">Display Stats</button>'
-            classch.innerHTML=choice+stats;
+            var choice="<p id=classcho>You Have Chosen to Be a "+battleclass+'<br><button id="showstat" onclick="showstat()">Display Stats</button></p>';
+            classch.innerHTML=choice;
             classch.style.display='flex';
         }
         function showstat()
         {
             classch=document.getElementById('box');
-            var statlist="Class: "+battleclass+"<br>Level: "+level+"<br>Health: "+health+"<br>Attack: "+attack+"<br>Defense: "+defense+"<br>Speed: "+speed;
-            classch.innerHTML=statlist;
+            var statlist="<p id='statlist'>Class: "+battleclass+"<br>Level: "+level+"<br>Health: "+health+"<br>Attack: "+attack+"<br>Defense: "+defense+"<br>Speed: "+speed;
+            var gobac='<br><button id="showstat" onclick="setclass()">Go Back</button></p>';
+            classch.style.display='block'
+            classch.innerHTML=statlist+gobac;
+
         }
     </script>
   </body>
