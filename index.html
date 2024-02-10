@@ -22,28 +22,46 @@
     </div>
     <script>
         var battleclass;
+        var level=1;
+        var ap=0;
+        var health;
+        var defense;
+        var attack;
+        var speed;
         function changedesc(classtype)
         {
             battleclass=classtype;
             var para=document.getElementById('desc');
             if (classtype=="ranger")
             {
+                health=50;defense=50;attack=150;speed=150;
                 para.innerHTML="RANGER<br><br>Rangers specialize in Quick attacks and superior speeds.<br>But, They are quite the fragile units and lack in defense and endurance.";
             }
             if (classtype=="warrior")
             {
+                health=100;defense=100;attack=100;speed=100;
                 para.innerHTML="WARRIOR<br><br>Warriors strike a balance between attack and defence.<br>The Most Balanced Class of the three with an uniform split between the characteristics.";
             }
             if (classtype=="paladin")
             {
+                health=150;defense=150;attack=50;speed=50;
                 para.innerHTML="PALADIN<br><br>Paladins hailed as the protectors of the realm.<br>They have huge endurance and survivability but as a protector have low offensive capabilities."
             }
         }
         function setclass()
         {
+
             classch=document.getElementById('box');
-            classch.innerHTML="You Have Chosen to Be a "+battleclass;
+            var choice="<p id=classcho>You Have Chosen to Be a "+battleclass+"</p>";
+            var stats='<br><button id="showstat" onclick="showstat()">Display Stats</button>'
+            classch.innerHTML=choice+stats;
             classch.style.display='flex';
+        }
+        function showstat()
+        {
+            classch=document.getElementById('box');
+            var statlist="Class: "+battleclass+"<br>Level: "+level+"<br>Health: "+health+"<br>Attack: "+attack+"<br>Defense: "+defense+"<br>Speed: "+speed;
+            classch.innerHTML=statlist;
         }
     </script>
   </body>
