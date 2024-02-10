@@ -139,3 +139,12 @@ font-weight: bold;
     top: 5%;
     left: 5%;
 }
+#act #einfo
+{
+    position: absolute;
+    align-content:right;
+    font-size: 14px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    top: 5%;
+    left: 75%;
+}
