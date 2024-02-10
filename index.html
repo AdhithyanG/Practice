@@ -25,7 +25,7 @@
         var playerimg;
         var level=1;
         var ap=0;
-        var php,pdef,patk,pspeed,pturns=0,buffval=1;
+        var ophp,php,pdef,patk,pspeed,pturns=0,buffval=1;
         var ehp,eatk,edef,espeed,eturns=0;
         var floor=1;
         function changedesc(classtype)
@@ -50,6 +50,7 @@
                 playerimg="paladin.jpg"
                 para.innerHTML="PALADIN<br><br>Paladins hailed as the protectors of the realm.<br>They have huge endurance and survivability but as a protector have low offensive capabilities."
             }
+            ophp=php;
         }
         function setclass()
         {
@@ -58,6 +59,7 @@
                 return;
             }
             floor=1;
+            php=ophp;
             classch=document.getElementById('box');
             var choice="<p id=classcho>You Have Chosen to Be a "+battleclass+'<br><button id="showstat" onclick="showstat()">Display Stats</button>';
             var startadv='<br><span class="start" onclick="venture()">Start Exploration!</span></p>'
@@ -97,15 +99,16 @@
         function battle()
         {
             inter=document.getElementById('act');
-            var playinfo="<p id='playinfo'>Class: "+battleclass+"<br>Level: "+level+"<br>Health: "+php+"<br>Attack: "+patk*buffval+"<br>Defense: "+pdef*buffval+"<br>Speed: "+pspeed*buffval+"<br>Pturns: "+pturns+"</p>";
+            var playinfo="<p id='playinfo'>Class: "+battleclass+"<br>Level: "+level+"<br>Health: "+php+"<br>Attack: "+Math.floor(patk*buffval)+"<br>Defense: "+Math.floor(pdef*buffval)+"<br>Speed: "+Math.floor(pspeed*buffval)+"<br>Pturns: "+(pturns.toFixed(2))+"</p>";
+            var einfo="<p id='einfo'>Class: Monster<br>Health: "+ehp+"<br>Attack: "+eatk+"<br>Defense: "+edef+"<br>Speed: "+espeed+"<br>Eturns: "+eturns+"</p>";
             battlemove='<br><br><button id="attack" onclick="attack()">Attack!</button><button id="buff" onclick="buff()">Strengthen!</button><button id="recover" onclick="heal()">Recover!</button>'
-            inter.innerHTML=battlemove+playinfo;
+            inter.innerHTML=battlemove+playinfo+einfo;
         }
         function attack()
         {
             inter=document.getElementById('act');
             pturns=pturns+((pspeed*buffval)/espeed);
-            var hittime=Math.floor((pspeed*buffval)/espeed);
+            var hittime=Math.floor(pturns);
             var orgehp=ehp;
             var losshp;
             var didwhat="<p id='pdmglog'>";
@@ -120,34 +123,51 @@
                 didwhat=didwhat+"Enemy Defeated, Continuing to next floor!<br></p>";
                 console.log(didwhat);
                 inter.innerHTML=didwhat;
-                setTimeout(venture,5000);
+                setTimeout(venture,2000);
             }
             else
             {
                 inter.innerHTML=didwhat+"<p><br>Enemy's Turn...</p>";
-                setTimeout(enemyturn,5000);
+                setTimeout(enemyturn,2000);
             }
         }
         function buff()
         {
             inter=document.getElementById('act');
             pturns=pturns+((pspeed*buffval)/espeed);
-            var hittime=Math.floor((pspeed*buffval)/espeed);
+            var hittime=Math.floor(pturns);
             buffval=buffval+(0.2*hittime);
             pturns=pturns-hittime;
             var didwhat="<p>You Buffed your base stats by a factor of "+buffval+"<br>";
             inter.innerHTML=didwhat+"<p><br>Enemy's Turn...</p>";
-            setTimeout(enemyturn,5000);
+            setTimeout(enemyturn,2000);
+        }
+        function heal()
+        {
+            inter=document.getElementById('act');
+            pturns=pturns+((pspeed*buffval)/espeed);
+            var hittime=Math.floor(pturns);
+            var recovery=((buffval)/2)*hittime;
+            buffval=buffval/2;
+            php=php+recovery;
+            if(php>ophp)
+            {
+                php=ophp;
+            }
+            pturns=pturns-hittime;
+            var didwhat="<p>You recovered hp of "+recovery+"<br>";
+            inter.innerHTML=didwhat+"<p><br>Enemy's Turn...</p>";
+            setTimeout(enemyturn,2000);
         }
         function enemyturn()
         {
             eturns=eturns+(espeed/(pspeed*buffval));
-            var hittime=Math.floor(espeed/(pspeed*buffval));
+            var hittime=Math.floor(eturns);
             var orgehp=php;
             var losshp;
             console.log("ping")
             var didwhat="<p id='edmglog'>";
-            losshp=Math.floor((eatk/(pdef*buffval))*hittime);
+            losshp=Math.floor((eatk/(pdef*buffval))*hittime*100);
             eturns=eturns-hittime;
             php=php-losshp;
             didwhat=didwhat+"Total Damage Received: "+(orgehp-php)+"<br>";
@@ -157,12 +177,13 @@
                 floor=1;
                 didwhat=didwhat+"You were defeated and ended up in the first Floor...<br></p>";
                 inter.innerHTML=didwhat;
-                setTimeout(venture,5000);
+                setTimeout(defaultsetbox,2000);
+                setTimeout(setclass,2000);
             }
             else
             {
                 inter.innerHTML=didwhat;
-                setTimeout(battle,5000);
+                setTimeout(battle,2000);
             }   
         }
         function backtosetclass()
