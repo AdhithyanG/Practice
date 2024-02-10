@@ -8,17 +8,6 @@ body
     padding: 0; /* Reset default padding */
     height: 100vh; /* Ensure the body fills the viewport vertically */
 }
-#Welcome
-{
-background-image: url("wooden-texture.jpg");
-background-clip: text;
-color: transparent;
--webkit-background-clip: text;
-text-align:center;
-font-family:"Algerian", serif;
-font-size: 42px;
-font-weight: bold;
-}
 #box
 {
 width: 330px;
@@ -29,6 +18,17 @@ margin: auto;
 color: black;  
 align-content: center; 
 align-items: center;
+}
+#Welcome
+{
+background-image: url("wooden-texture.jpg");
+background-clip: text;
+color: transparent;
+-webkit-background-clip: text;
+text-align:center;
+font-family:"Algerian", serif;
+font-size: 42px;
+font-weight: bold;
 }
 #desc
 {
@@ -43,4 +43,13 @@ align-items: center;
     width: 200px;
     height: 80px;
     font-size: 22px;
+}
+#classcho
+{
+    width: 100;
+    font-size: 40px;
+}
+#statlist
+{
+    font-size: 28px;
 }
