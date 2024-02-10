@@ -52,8 +52,9 @@
         {
 
             classch=document.getElementById('box');
-            var choice="<p id=classcho>You Have Chosen to Be a "+battleclass+'<br><button id="showstat" onclick="showstat()">Display Stats</button></p>';
-            classch.innerHTML=choice;
+            var choice="<p id=classcho>You Have Chosen to Be a "+battleclass+'<br><button id="showstat" onclick="showstat()">Display Stats</button>';
+            var startadv='<br><span class="start" onclick="venture()">Start Exploration!</span></p>'
+            classch.innerHTML=choice+startadv;
             classch.style.display='flex';
         }
         function showstat()
