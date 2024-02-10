@@ -53,3 +53,9 @@ font-weight: bold;
 {
     font-size: 28px;
 }
+.start
+{
+    color: blue; /* Set text color */
+    text-decoration: underline; /* Add underline to mimic link */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
