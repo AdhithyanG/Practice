@@ -10,14 +10,20 @@ body
 }
 #box
 {
-width: 330px;
-height: 440px;
-background-color: rgba(255,255,255,0.5);
+width: 400px;
+height: 500px;
+position: relative;
+background-color: rgba(255,255,255,0.7);
 border: 7px solid black;
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-weight: bold;
+font-size: 20px;
 margin: auto;
 color: black;  
 align-content: center; 
 align-items: center;
+text-align: center;
+justify-content: center;
 }
 #Welcome
 {
@@ -52,10 +58,84 @@ font-weight: bold;
 #statlist
 {
     font-size: 28px;
+    text-align: center;
+    margin: 0;
 }
 .start
 {
     color: blue; /* Set text color */
     text-decoration: underline; /* Add underline to mimic link */
     cursor: pointer; /* Change cursor to pointer on hover */
+}
+#box #backtostart
+{
+    font-size: 11px;
+    background-color: rgb(240, 154, 93);
+    border: 3px solid rgb(233, 17, 82);
+    position: absolute;
+    top: 10%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+#box #floornum
+{
+    width: 30%;
+    font-size: 24px;
+    font-family:"Algerian", serif;
+    color: aliceblue;
+    background-color: rgb(242, 109, 14);
+    font-weight: bolder;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#box #player
+{
+    position: absolute;
+    width: 25%;
+    height: 30%;
+    top:50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+}
+#box #enemy
+{
+    position: absolute;
+    width: 25%;
+    height: 30%;
+    top:50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+#box #act
+{
+    background-image: url("lightwood.jpg");
+    position: absolute;
+    width: 100%;
+    height:35%;
+    top:65%
+}
+#act #fight
+{
+    position: absolute;
+    background-color: transparent;
+    font-family: cursive, serif;
+    font-weight: bolder;
+    font-size: 20px;
+    border: 0;
+    top: 40%;
+    left: 37%;
+    width: 26%;
+    height: 20%;
+    cursor: pointer;
+}
+#act #playinfo
+{
+    position: absolute;
+    align-content:left;
+    font-size: 14px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    top: 5%;
+    left: 5%;
 }
