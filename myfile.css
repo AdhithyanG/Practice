@@ -1,3 +1,9 @@
+@keyframes blink {
+    0% { opacity: 1; } /* Fully visible */
+    50% { opacity: 0; } /* Hidden */
+    100% { opacity: 1; } /* Fully visible again */
+}
+
 body
 {
     background-image: url("Castle.jpg");
@@ -6,7 +12,7 @@ body
     background-attachment: fixed;
     margin: 0; /* Reset default margin */
     padding: 0; /* Reset default padding */
-    height: 100vh; /* Ensure the body fills viewport vertically */
+    height: 100vh; /* Ensure the body fills the viewport vertically */
 }
 #box
 {
@@ -147,4 +153,15 @@ font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     top: 5%;
     left: 75%;
+}
+#box #aura
+{
+    position: absolute;
+    width: 30%;
+    height: 35%;
+    top:50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    visibility:hidden;
+    opacity: 30%;
 }
